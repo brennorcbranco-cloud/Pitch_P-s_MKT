@@ -1,0 +1,193 @@
+{
+  "versao": "1.0",
+  "gerado_em": "2026-07-14",
+  "observacao_geral": "Regras CFM/ANVISA sao normas juridicas (estaveis, mudam por resolucao formal). Regras Meta/Google sao politicas operacionais de plataforma (volateis, mudam sem aviso previo). O campo 'estabilidade' reflete essa diferenca e deve orientar a frequencia de revisao de cada bloco.",
+  "regras": [
+    {
+      "id": 1,
+      "fonte": "CFM",
+      "norma": "Resolucao CFM 2.336/2023",
+      "artigo": "Art. 4o",
+      "categoria_produto": "geral",
+      "regra": "Peca de publicidade/propaganda medica deve conter nome do medico, numero de registro no CRM, a palavra MEDICO, especialidade e RQE quando houver.",
+      "keywords_gatilho": [],
+      "keywords_ausencia_obrigatoria": ["crm", "medico"],
+      "estabilidade": "estavel",
+      "ultima_verificacao": "2026-07-14"
+    },
+    {
+      "id": 2,
+      "fonte": "CFM",
+      "norma": "Resolucao CFM 2.336/2023",
+      "artigo": "Art. 11, XII",
+      "categoria_produto": "geral",
+      "regra": "Proibido garantir, prometer ou insinuar bons resultados do tratamento.",
+      "keywords_gatilho": ["garantido", "garanta", "resultado garantido", "certeza de resultado", "promete", "prometemos", "100% eficaz"],
+      "estabilidade": "estavel",
+      "ultima_verificacao": "2026-07-14"
+    },
+    {
+      "id": 3,
+      "fonte": "CFM",
+      "norma": "Resolucao CFM 2.336/2023",
+      "artigo": "Art. 11, II e IX",
+      "categoria_produto": "geral",
+      "regra": "Proibido atribuir capacidade privilegiada a aparelhagem ou tecnica, mesmo que o medico seja o unico a realiza-la.",
+      "keywords_gatilho": ["unico no brasil", "unica tecnologia", "exclusivo", "o melhor do mercado", "sem concorrentes", "tecnologia revolucionaria"],
+      "estabilidade": "estavel",
+      "ultima_verificacao": "2026-07-14"
+    },
+    {
+      "id": 4,
+      "fonte": "CFM",
+      "norma": "Resolucao CFM 2.336/2023",
+      "artigo": "Art. 11, III",
+      "categoria_produto": "geral",
+      "regra": "Proibido divulgar equipamento ou medicamento sem registro na ANVISA.",
+      "keywords_gatilho": [],
+      "observacao": "Nao detectavel por palavra-chave; exige checagem cruzada do nome do produto contra base de registros ANVISA. Marcar para revisao manual sempre que um nome de produto novo aparecer no texto.",
+      "estabilidade": "estavel",
+      "ultima_verificacao": "2026-07-14"
+    },
+    {
+      "id": 5,
+      "fonte": "CFM",
+      "norma": "Resolucao CFM 2.336/2023",
+      "artigo": "Art. 14, II",
+      "categoria_produto": "geral",
+      "regra": "Antes/depois permitido apenas com carater educativo, conjunto de imagens com evolucoes satisfatorias, insatisfatorias e complicacoes, sem identificar o paciente e sem edicao/manipulacao da imagem.",
+      "keywords_gatilho": ["antes e depois", "antes/depois"],
+      "estabilidade": "estavel",
+      "ultima_verificacao": "2026-07-14"
+    },
+    {
+      "id": 6,
+      "fonte": "CFM",
+      "norma": "Resolucao CFM 2.336/2023",
+      "artigo": "Art. 14, g",
+      "categoria_produto": "geral",
+      "regra": "Depoimento de paciente repostado deve ser sobrio, sem adjetivo de superioridade e sem induzir promessa de resultado.",
+      "keywords_gatilho": ["melhor profissional", "mudou minha vida", "nunca vi resultado igual", "milagroso"],
+      "estabilidade": "estavel",
+      "ultima_verificacao": "2026-07-14"
+    },
+    {
+      "id": 7,
+      "fonte": "CFM",
+      "norma": "Resolucao CFM 2.336/2023",
+      "artigo": "Art. 9, XVIII, c",
+      "categoria_produto": "geral",
+      "regra": "Quando o medico e criador/desenvolvedor do insumo, ao anunciar nao pode citar marca comercial nem fabricante.",
+      "keywords_gatilho": [],
+      "estabilidade": "estavel",
+      "ultima_verificacao": "2026-07-14"
+    },
+    {
+      "id": 8,
+      "fonte": "CFM",
+      "norma": "Resolucao CFM 2.336/2023",
+      "artigo": "Art. 11, XVI e paragrafo 2o",
+      "categoria_produto": "geral",
+      "regra": "Proibido sensacionalismo: enaltecer a propria atuacao, manipular dado estatistico, ou causar panico/inseguranca coletiva ou individual.",
+      "keywords_gatilho": ["nunca visto antes", "revolucionario", "descoberta", "ultima chance", "corra"],
+      "estabilidade": "estavel",
+      "ultima_verificacao": "2026-07-14"
+    },
+    {
+      "id": 9,
+      "fonte": "ANVISA",
+      "norma": "RDC 96/2008, Art. 27",
+      "categoria_produto": "medicamento_prescricao",
+      "regra": "Medicamento de venda sob prescricao (ex: toxina botulinica) so pode ser divulgado em material dirigido exclusivamente a profissional de saude habilitado. Proibida divulgacao ao publico leigo.",
+      "keywords_gatilho": ["toxina botulinica", "botox", "toxina"],
+      "observacao": "Se o texto parece destinado ao consumidor final (linguagem de venda direta) E menciona toxina, reprovar automaticamente.",
+      "estabilidade": "estavel",
+      "ultima_verificacao": "2026-07-14"
+    },
+    {
+      "id": 10,
+      "fonte": "ANVISA",
+      "norma": "Lei 6.360/76 + jurisprudencia de fiscalizacao (casos de interdicao por categoria irregular)",
+      "categoria_produto": "produto_para_saude",
+      "regra": "RDC 96/2008 nao se aplica a produto para saude (preenchedor de acido hialuronico, CaHA, fios de PDO). Regra central: o produto deve estar registrado na categoria correta (produto para saude, nao cosmetico) e a peca nao pode sugerir uso/indicacao fora do registro.",
+      "keywords_gatilho": [],
+      "observacao": "Exige checagem cruzada do numero de registro/categoria do produto citado. Nao detectavel so por palavra-chave.",
+      "estabilidade": "estavel",
+      "ultima_verificacao": "2026-07-14"
+    },
+    {
+      "id": 11,
+      "fonte": "Meta Ads",
+      "norma": "Meta Transparency Center - Health & Wellness policy",
+      "categoria_produto": "geral",
+      "regra": "Proibida comparacao lado a lado (antes/depois) especificamente para tratamento de rugas: Botox, preenchedor dermico ou qualquer outro anti-aging.",
+      "keywords_gatilho": ["antes e depois", "antes/depois"],
+      "produtos_nomeados_pela_politica": ["botox", "preenchedor dermico", "toxina", "anti-aging"],
+      "estabilidade": "volatil",
+      "ultima_verificacao": "2026-07-14"
+    },
+    {
+      "id": 12,
+      "fonte": "Meta Ads",
+      "norma": "Meta Transparency Center - Health & Wellness policy",
+      "categoria_produto": "geral",
+      "regra": "Anuncio de produto, procedimento ou cirurgia cosmetica so pode ser direcionado a maiores de 18 anos.",
+      "keywords_gatilho": [],
+      "observacao": "Checar configuracao de segmentacao de idade da campanha, nao so o texto do anuncio.",
+      "estabilidade": "volatil",
+      "ultima_verificacao": "2026-07-14"
+    },
+    {
+      "id": 13,
+      "fonte": "Meta Ads",
+      "norma": "Meta Transparency Center - Health & Wellness policy",
+      "categoria_produto": "geral",
+      "regra": "Proibido conteudo que gere autopercepcao negativa, explore inseguranca ou faca body shaming.",
+      "keywords_gatilho": ["voce tem vergonha", "cansada de esconder", "ninguem vai notar sua imperfeicao", "sua rugas te envelhecem"],
+      "estabilidade": "volatil",
+      "ultima_verificacao": "2026-07-14"
+    },
+    {
+      "id": 14,
+      "fonte": "Meta Ads",
+      "norma": "Facebook Business Help Center - Personal Health policy",
+      "categoria_produto": "geral",
+      "regra": "Proibida imagem em zoom/close focada em condicao especifica do corpo (ex: acne, rugas).",
+      "keywords_gatilho": [],
+      "observacao": "Regra de imagem, nao de texto. Marcar para revisao manual do criativo visual.",
+      "estabilidade": "volatil",
+      "ultima_verificacao": "2026-07-14"
+    },
+    {
+      "id": 15,
+      "fonte": "Google Ads",
+      "norma": "support.google.com/adspolicy - Healthcare and medicines policy",
+      "categoria_produto": "geral",
+      "regra": "Conteudo de saude/medicina, incluindo dispositivo medico, pode exigir certificacao previa do anunciante junto ao Google, dependendo da localizacao.",
+      "keywords_gatilho": [],
+      "observacao": "Checagem de conta, nao de texto do anuncio.",
+      "estabilidade": "volatil",
+      "ultima_verificacao": "2026-07-14"
+    },
+    {
+      "id": 16,
+      "fonte": "Google Ads",
+      "norma": "support.google.com/adspolicy - Healthcare and medicines policy",
+      "categoria_produto": "geral",
+      "regra": "Proibida alegacao enganosa, garantia de resultado ou linguagem de 'cura milagrosa'.",
+      "keywords_gatilho": ["garantido", "cura milagrosa", "100% eficaz", "resultado garantido"],
+      "estabilidade": "volatil",
+      "ultima_verificacao": "2026-07-14"
+    },
+    {
+      "id": 17,
+      "fonte": "Google Ads",
+      "norma": "support.google.com/adspolicy - Prescription drug services",
+      "categoria_produto": "medicamento_prescricao",
+      "regra": "Promocao de medicamento sob prescricao restrita a localidades aprovadas e anunciantes certificados.",
+      "keywords_gatilho": ["toxina botulinica", "botox", "toxina"],
+      "estabilidade": "volatil",
+      "ultima_verificacao": "2026-07-14"
+    }
+  ]
+}
