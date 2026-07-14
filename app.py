@@ -39,12 +39,19 @@ from flask import Flask, request, render_template_string
 _CLIENTE_IA = None
 _MOTIVO_IA_DESLIGADA = None
 
+_chaves_relacionadas = sorted(k for k in os.environ if "ANTHROPIC" in k.upper())
+print(f"[startup][diagnostico] variaveis de ambiente contendo 'ANTHROPIC': {_chaves_relacionadas!r}")
+print(f"[startup][diagnostico] total de variaveis de ambiente visiveis neste processo: {len(os.environ)}")
+
 try:
     import anthropic
-    if not os.environ.get("ANTHROPIC_API_KEY"):
+    valor_chave = os.environ.get("ANTHROPIC_API_KEY")
+    if not valor_chave:
         _MOTIVO_IA_DESLIGADA = "variável de ambiente ANTHROPIC_API_KEY não encontrada"
+    elif not valor_chave.strip():
+        _MOTIVO_IA_DESLIGADA = "ANTHROPIC_API_KEY está vazia ou só tem espaço em branco"
     else:
-        _CLIENTE_IA = anthropic.Anthropic()
+        _CLIENTE_IA = anthropic.Anthropic(api_key=valor_chave.strip())
 except ImportError as exc:
     _MOTIVO_IA_DESLIGADA = f"biblioteca 'anthropic' não instalada ({exc})"
 except Exception as exc:
