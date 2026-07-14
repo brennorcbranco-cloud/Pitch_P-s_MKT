@@ -36,11 +36,21 @@ from datetime import date
 
 from flask import Flask, request, render_template_string
 
+_CLIENTE_IA = None
+_MOTIVO_IA_DESLIGADA = None
+
 try:
     import anthropic
-    _CLIENTE_IA = anthropic.Anthropic() if os.environ.get("ANTHROPIC_API_KEY") else None
-except ImportError:
-    _CLIENTE_IA = None
+    if not os.environ.get("ANTHROPIC_API_KEY"):
+        _MOTIVO_IA_DESLIGADA = "variável de ambiente ANTHROPIC_API_KEY não encontrada"
+    else:
+        _CLIENTE_IA = anthropic.Anthropic()
+except ImportError as exc:
+    _MOTIVO_IA_DESLIGADA = f"biblioteca 'anthropic' não instalada ({exc})"
+except Exception as exc:
+    _MOTIVO_IA_DESLIGADA = f"falha ao inicializar cliente Anthropic ({exc})"
+
+print(f"[startup] IA de imagem: {'HABILITADA' if _CLIENTE_IA else 'DESABILITADA — motivo: ' + str(_MOTIVO_IA_DESLIGADA)}")
 
 app = Flask(__name__)
 
@@ -131,8 +141,8 @@ def analisar_imagem_com_ia(imagem_bytes: bytes, media_type: str) -> dict:
     determinístico — o modelo nunca decide sozinho se algo viola uma norma.
     """
     if _CLIENTE_IA is None:
-        return {"erro": "ANTHROPIC_API_KEY não configurada neste ambiente. "
-                         "Configure a variável de ambiente para habilitar a análise de imagem."}
+        return {"erro": f"Análise de imagem desligada ({_MOTIVO_IA_DESLIGADA}). "
+                         "Configure a variável ANTHROPIC_API_KEY no Railway e faça redeploy."}
 
     imagem_b64 = base64.standard_b64encode(imagem_bytes).decode("utf-8")
 
